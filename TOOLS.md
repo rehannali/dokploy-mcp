@@ -2,7 +2,7 @@
 
 > Auto-generated from the [Dokploy OpenAPI spec](https://docs.dokploy.com/openapi.json). Run `pnpm generate` to update.
 
-- **Total Tools**: 519
+- **Total Tools**: 524
 - **Categories**: 48
 
 ## Categories
@@ -19,7 +19,7 @@
 - [customRole](#customRole) (6 tools)
 - [deployment](#deployment) (8 tools)
 - [destination](#destination) (6 tools)
-- [docker](#docker) (9 tools)
+- [docker](#docker) (12 tools)
 - [domain](#domain) (9 tools)
 - [environment](#environment) (7 tools)
 - [gitea](#gitea) (8 tools)
@@ -38,7 +38,7 @@
 - [port](#port) (4 tools)
 - [postgres](#postgres) (16 tools)
 - [previewDeployment](#previewDeployment) (4 tools)
-- [project](#project) (8 tools)
+- [project](#project) (9 tools)
 - [redirects](#redirects) (4 tools)
 - [redis](#redis) (16 tools)
 - [registry](#registry) (7 tools)
@@ -49,7 +49,7 @@
 - [settings](#settings) (51 tools)
 - [sshKey](#sshKey) (7 tools)
 - [sso](#sso) (10 tools)
-- [stripe](#stripe) (7 tools)
+- [stripe](#stripe) (8 tools)
 - [swarm](#swarm) (4 tools)
 - [tag](#tag) (8 tools)
 - [user](#user) (23 tools)
@@ -244,7 +244,10 @@
 | Tool | Method | Parameters |
 |------|--------|------------|
 | `docker-getContainers` | GET | `serverId`? |
-| `docker-restartContainer` | POST | `containerId` (string) |
+| `docker-restartContainer` | POST | `containerId` (string), `serverId`? |
+| `docker-startContainer` | POST | `containerId` (string), `serverId`? |
+| `docker-stopContainer` | POST | `containerId` (string), `serverId`? |
+| `docker-killContainer` | POST | `containerId` (string), `serverId`? |
 | `docker-removeContainer` | POST | `containerId` (string), `serverId`? |
 | `docker-getConfig` | GET | `containerId` (string), `serverId`? |
 | `docker-getContainersByAppNameMatch` | GET | `appName` (string), `appType`?, `serverId`? |
@@ -554,6 +557,7 @@
 | `project-one` | GET | `projectId` (string) |
 | `project-all` | GET | None |
 | `project-allForPermissions` | GET | None |
+| `project-homeStats` | GET | None |
 | `project-search` | GET | +5 optional |
 | `project-remove` | POST | `projectId` (string) |
 | `project-update` | POST | `projectId` (string), +5 optional |
@@ -743,6 +747,7 @@
 | `stripe-createCustomerPortalSession` | POST | None |
 | `stripe-upgradeSubscription` | POST | `tier` ("hobby" | "startup"), `serverQuantity` (number), `isAnnual` (boolean) |
 | `stripe-canCreateMoreServers` | GET | None |
+| `stripe-updateInvoiceNotifications` | POST | `enabled` (boolean) |
 | `stripe-getInvoices` | GET | None |
 
 ## swarm
@@ -779,7 +784,7 @@
 | `user-haveRootAccess` | GET | None |
 | `user-getBackups` | GET | None |
 | `user-getServerMetrics` | GET | None |
-| `user-update` | POST | +24 optional |
+| `user-update` | POST | +25 optional |
 | `user-getUserByToken` | GET | `token` (string) |
 | `user-getMetricsToken` | GET | None |
 | `user-remove` | POST | `userId` (string) |

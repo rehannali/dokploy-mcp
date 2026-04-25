@@ -1,5 +1,5 @@
 // AUTO-GENERATED FILE — DO NOT EDIT MANUALLY
-// Generated from openapi.json on 2026-04-17
+// Generated from openapi.json on 2026-04-25
 // Run `pnpm generate` to regenerate
 
 import { z } from "zod";
@@ -1272,9 +1272,45 @@ export const generatedTools: ToolDefinition[] = [
     tag: "docker",
     method: "POST",
     path: "/docker.restartContainer",
-    schema: z.object({ "containerId": z.string().regex(new RegExp("^[a-zA-Z0-9.\\-_]+$")).min(1) }),
+    schema: z.object({ "containerId": z.string().regex(new RegExp("^[a-zA-Z0-9.\\-_]+$")).min(1), "serverId": z.string().optional() }),
     annotations: {
       title: "Docker RestartContainer",
+      ...{"idempotentHint":true,"openWorldHint":true},
+    },
+  },
+  {
+    name: "docker-startContainer",
+    description: "POST /docker.startContainer",
+    tag: "docker",
+    method: "POST",
+    path: "/docker.startContainer",
+    schema: z.object({ "containerId": z.string().regex(new RegExp("^[a-zA-Z0-9.\\-_]+$")).min(1), "serverId": z.string().optional() }),
+    annotations: {
+      title: "Docker StartContainer",
+      ...{"idempotentHint":true,"openWorldHint":true},
+    },
+  },
+  {
+    name: "docker-stopContainer",
+    description: "POST /docker.stopContainer",
+    tag: "docker",
+    method: "POST",
+    path: "/docker.stopContainer",
+    schema: z.object({ "containerId": z.string().regex(new RegExp("^[a-zA-Z0-9.\\-_]+$")).min(1), "serverId": z.string().optional() }),
+    annotations: {
+      title: "Docker StopContainer",
+      ...{"idempotentHint":true,"openWorldHint":true},
+    },
+  },
+  {
+    name: "docker-killContainer",
+    description: "POST /docker.killContainer",
+    tag: "docker",
+    method: "POST",
+    path: "/docker.killContainer",
+    schema: z.object({ "containerId": z.string().regex(new RegExp("^[a-zA-Z0-9.\\-_]+$")).min(1), "serverId": z.string().optional() }),
+    annotations: {
+      title: "Docker KillContainer",
       ...{"idempotentHint":true,"openWorldHint":true},
     },
   },
@@ -3415,6 +3451,18 @@ export const generatedTools: ToolDefinition[] = [
     },
   },
   {
+    name: "project-homeStats",
+    description: "GET /project.homeStats",
+    tag: "project",
+    method: "GET",
+    path: "/project.homeStats",
+    schema: z.object({}),
+    annotations: {
+      title: "Project HomeStats",
+      ...{"readOnlyHint":true,"idempotentHint":true,"openWorldHint":true},
+    },
+  },
+  {
     name: "project-search",
     description: "GET /project.search",
     tag: "project",
@@ -4807,6 +4855,18 @@ export const generatedTools: ToolDefinition[] = [
     },
   },
   {
+    name: "stripe-updateInvoiceNotifications",
+    description: "POST /stripe.updateInvoiceNotifications",
+    tag: "stripe",
+    method: "POST",
+    path: "/stripe.updateInvoiceNotifications",
+    schema: z.object({ "enabled": z.boolean() }),
+    annotations: {
+      title: "Stripe UpdateInvoiceNotifications",
+      ...{"idempotentHint":true,"openWorldHint":true},
+    },
+  },
+  {
     name: "stripe-getInvoices",
     description: "GET /stripe.getInvoices",
     tag: "stripe",
@@ -4968,7 +5028,7 @@ export const generatedTools: ToolDefinition[] = [
     tag: "user",
     method: "POST",
     path: "/user.update",
-    schema: z.object({ "id": z.string().min(1).optional(), "firstName": z.string().optional(), "lastName": z.string().optional(), "isRegistered": z.boolean().optional(), "expirationDate": z.string().optional(), "createdAt2": z.string().optional(), "createdAt": z.union([z.string(), z.null()]).optional(), "twoFactorEnabled": z.union([z.boolean(), z.null()]).optional(), "email": z.string().email().regex(new RegExp("^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$")).min(1).optional(), "emailVerified": z.boolean().optional(), "image": z.union([z.string(), z.null()]).optional(), "banned": z.union([z.boolean(), z.null()]).optional(), "banReason": z.union([z.string(), z.null()]).optional(), "banExpires": z.union([z.string(), z.null()]).optional(), "updatedAt": z.string().optional(), "enablePaidFeatures": z.boolean().optional(), "allowImpersonation": z.boolean().optional(), "enableEnterpriseFeatures": z.boolean().optional(), "licenseKey": z.union([z.string(), z.null()]).optional(), "stripeCustomerId": z.union([z.string(), z.null()]).optional(), "stripeSubscriptionId": z.union([z.string(), z.null()]).optional(), "serversQuantity": z.number().optional(), "password": z.string().optional(), "currentPassword": z.string().optional() }),
+    schema: z.object({ "id": z.string().min(1).optional(), "firstName": z.string().optional(), "lastName": z.string().optional(), "isRegistered": z.boolean().optional(), "expirationDate": z.string().optional(), "createdAt2": z.string().optional(), "createdAt": z.union([z.string(), z.null()]).optional(), "twoFactorEnabled": z.union([z.boolean(), z.null()]).optional(), "email": z.string().email().regex(new RegExp("^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$")).min(1).optional(), "emailVerified": z.boolean().optional(), "image": z.union([z.string(), z.null()]).optional(), "banned": z.union([z.boolean(), z.null()]).optional(), "banReason": z.union([z.string(), z.null()]).optional(), "banExpires": z.union([z.string(), z.null()]).optional(), "updatedAt": z.string().optional(), "enablePaidFeatures": z.boolean().optional(), "allowImpersonation": z.boolean().optional(), "enableEnterpriseFeatures": z.boolean().optional(), "licenseKey": z.union([z.string(), z.null()]).optional(), "stripeCustomerId": z.union([z.string(), z.null()]).optional(), "stripeSubscriptionId": z.union([z.string(), z.null()]).optional(), "serversQuantity": z.number().optional(), "sendInvoiceNotifications": z.boolean().optional(), "password": z.string().optional(), "currentPassword": z.string().optional() }),
     annotations: {
       title: "User Update",
       ...{"idempotentHint":true,"openWorldHint":true},
